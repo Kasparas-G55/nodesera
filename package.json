@@ -1,0 +1,44 @@
+{
+  "name": "nodesera",
+  "version": "0.0.0",
+  "description": "Paysera Library for Node.js",
+  "repository": "Kasparas-G55/nodesera",
+  "author": "Kasparas Galdikas",
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "vitest dev",
+    "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
+    "test": "pnpm lint && vitest run --coverage"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/Kasparas-G55/nodesera/issues"
+  },
+  "homepage": "https://github.com/Kasparas-G55/nodesera#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.0",
+    "@vitest/coverage-c8": "^0.25.3",
+    "eslint": "^8.29.0",
+    "typescript": "^4.9.3",
+    "unbuild": "^1.0.1",
+    "vitest": "^0.25.3"
+  },
+  "packageManager": "pnpm@7.17.1"
+}
