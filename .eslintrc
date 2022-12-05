@@ -1,3 +1,8 @@
 {
-  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"]
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "quotes": ["error", "single"],
+    "semi": "error",
+    "indent": ["error", 2]
+  }
 }
