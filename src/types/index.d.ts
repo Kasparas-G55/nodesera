@@ -1,7 +1,17 @@
 /**
  * @see {@link https://developers.paysera.com/en/checkout/integrations/integration-library#request-parameters Paysera Request Parameters}
  */
-export interface RequestParams {
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      VITE_PROJECT_ID?: string;
+      VITE_PROJECT_PASSWORD?: string;
+    }
+  }
+}
+
+export interface RequiredRequestParams {
   /** Unique project number, generated on project creation. */
   projectid: string;
 
@@ -12,7 +22,7 @@ export interface RequestParams {
   accepturl: string;
 
   /** Full address (URL), to which the client is directed after he clicks the link to return to the shop. */
-  cancenlurl: string;
+  cancelurl: string;
 
   /**
    * Full address (URL), to which a seller will get information about performed payment.
@@ -23,7 +33,9 @@ export interface RequestParams {
 
   /** The version number of Paysera's system specification (API). */
   version: string;
+}
 
+export interface OptionalRequestParams {
   /** It is possible to indicate the user language (ISO 639-2/B: LIT, RUS, ENG, etc.). If Paysera does not support the selected language, the system will automatically choose a language according to the IP address or ENG language by default. */
   lang?: string;
 
@@ -152,13 +164,24 @@ export interface RequestParams {
   /** The date at which periodic payments will end. The date format should be yyyy-mm-dd. */
   periodic_payments_end_date?: string;
 
-  /** Additional request parameter that will be sent back with the **accepturl** and **callbackurl**. */
+  /** Additional request parameter(s) that will be sent back with the **accepturl** and **callbackurl**. */
   [x: string]: string | undefined;
 }
+
+type RequestParams = RequiredRequestParams & OptionalRequestParams;
+type VerifiedRequestParams = RequiredRequestParams & Record<keyof OptionalRequestParams, string>
 
 export interface ParamScheme {
   name: keyof RequestParams | string;
   maxlen?: number;
   required?: boolean;
   regexp?: RegExp;
+}
+
+export type QueryParameters = {
+  /** *Base64URL* string containing a stringified *URLSearchParams* object. */
+  data: string;
+
+  /** Concatenated *md5* hashed string containing: *data* + *projectPassword*.  */
+  sign: string;
 }
