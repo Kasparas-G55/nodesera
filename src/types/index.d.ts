@@ -172,7 +172,7 @@ type RequestParams = RequiredRequestParams & OptionalRequestParams;
 type VerifiedRequestParams = RequiredRequestParams & Record<keyof OptionalRequestParams, string>
 
 export interface ParamScheme {
-  name: keyof RequestParams | string;
+  name: string;
   maxlen?: number;
   required?: boolean;
   regexp?: RegExp;
