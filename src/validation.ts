@@ -28,7 +28,7 @@ export const schemes: ParamScheme[] = [
   { name: 'accepturl', maxlen: 255, required: true },
   { name: 'cancelurl', maxlen: 255, required: true },
   { name: 'callbackurl', maxlen: 255, required: true },
-  { name: 'version', maxlen: 9, required: true },
+  { name: 'version', maxlen: 9 },
   { name: 'lang', maxlen: 3 },
   { name: 'amount', maxlen: 11 },
   { name: 'currency', maxlen: 3 },
@@ -62,5 +62,5 @@ export const schemes: ParamScheme[] = [
   { name: 'beneficiary_bic', maxlen: 255 },
   { name: 'periodic_payments_frequency', maxlen: 255 },
   { name: 'periodic_payments_start_date', maxlen: 10 },
-  { name: 'periodic_payments_end_date', maxlen: 10 },
+  { name: 'periodic_payments_end_date', maxlen: 10 }
 ];
