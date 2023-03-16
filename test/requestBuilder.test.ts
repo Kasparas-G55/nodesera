@@ -32,4 +32,18 @@ describe('build request', () => {
     expect(() => requestBuilder.buildRequest(request))
       .toThrowError(new NodeseraException(`[${Object.keys(request).join(', ')}] must be of type string, make sure to stringify POJOs.`));
   });
+
+  it('returns query parameters when passing a valid request object.', () => {
+    const request: RequestParams = {
+      projectid: 'test',
+      accepturl: 'test',
+      callbackurl: 'test',
+      cancelurl: 'test',
+      orderid: 'test',
+      version: 'test'
+    };
+
+    expect(requestBuilder.buildRequest(request))
+      .toEqual({ data: '��#y�b', sign: '182498e06382edb26523a612a5f75110' });
+  });
 });
