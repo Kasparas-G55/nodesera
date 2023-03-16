@@ -44,6 +44,9 @@ describe('build request', () => {
     };
 
     expect(requestBuilder.buildRequest(request))
-      .toEqual({ data: '��#y�b', sign: '182498e06382edb26523a612a5f75110' });
+      .toEqual({
+        data: 'cHJvamVjdGlkPXRlc3QmYWNjZXB0dXJsPXRlc3QmY2FsbGJhY2t1cmw9dGVzdCZjYW5jZWx1cmw9dGVzdCZvcmRlcmlkPXRlc3QmdmVyc2lvbj10ZXN0',
+        sign: '623c93b53648ef2bdd1d5f0af4e7554b'
+      });
   });
 });

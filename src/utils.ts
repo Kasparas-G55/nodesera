@@ -6,7 +6,7 @@ import { QueryParameters, RequestParams, VerifiedRequestParams } from './types';
 export function encodeURLBase64(request: RequestParams) {
   if (verifyRequestParams(request)) {
     const params = new URLSearchParams(request).toString();
-    return Buffer.from(params, 'base64url').toString();
+    return Buffer.from(params).toString('base64url');
   }
 }
 
