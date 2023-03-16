@@ -19,7 +19,7 @@ describe('build request', () => {
     });
   }
 
-  it('throws exception when one of the values on successful build', () => {
+  it('throws exception when one of the values is not a string.', () => {
     const request: any = {
       projectid: [],
       orderid: {},
