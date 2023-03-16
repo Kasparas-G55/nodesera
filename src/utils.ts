@@ -18,7 +18,7 @@ export function createURLFromRequest(query: QueryParameters) {
   return url.toString();
 }
 
-export function verifyRequestParams(request: RequestParams): request is VerifiedRequestParams {
+function verifyRequestParams(request: RequestParams): request is VerifiedRequestParams {
   const invalidParams: string[] = [];
   for (const param in request) {
     if (typeof request[param] !== 'string') {
