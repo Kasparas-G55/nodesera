@@ -44,7 +44,7 @@ export function createRequestBuilder(projectPassword: string) {
      * @returns {QueryParameters} Query Parameters
      */
     createRequest(request: RequestParams): QueryParameters {
-      const data = encodeURLBase64(request)!;
+      const data = encodeURLBase64(request);
       return {
         data,
         sign: createHash('md5').update(data + projectPassword).digest('hex')
