@@ -3,21 +3,15 @@ import { ParamScheme, RequestParams } from './types';
 
 export function requestValidation(request: RequestParams) {
   for (const scheme of schemes) {
-    const { name, maxlen, required, regexp } = scheme;
+    const { name, maxlen, required } = scheme;
     const param = request?.[name];
 
-    if (required && param === undefined) {
+    if (required && !param) {
       throw new NodeseraException(`${name} is required.`);
     }
 
-    if (param) {
-      if (maxlen && param.length > maxlen) {
-        throw new NodeseraException(`${name}'s length can't be greater than ${maxlen}.`);
-      }
-
-      if (regexp && !regexp.test(param)) {
-        throw new NodeseraException(`${name} doesn't match regular expression.`);
-      }
+    if (param && maxlen && param.length > maxlen) {
+      throw new NodeseraException(`${name}'s length can't be greater than ${maxlen}.`);
     }
   }
 }

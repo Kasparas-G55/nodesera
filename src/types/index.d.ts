@@ -175,7 +175,6 @@ export interface ParamScheme {
   name: string;
   maxlen?: number;
   required?: boolean;
-  regexp?: RegExp;
 }
 
 export type QueryParameters = {
