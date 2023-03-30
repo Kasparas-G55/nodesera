@@ -9,14 +9,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.cjs"
+      "types": "./dist/nodesera.d.ts",
+      "import": "./dist/nodesera.mjs",
+      "require": "./dist/nodesera.cjs"
     }
   },
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/nodesera.cjs",
+  "module": "./dist/nodesera.mjs",
+  "types": "./dist/nodesera.d.ts",
   "files": [
     "dist"
   ],

@@ -1,6 +1,6 @@
 import { createHash } from 'crypto';
-import Nodesera from '.';
 import { NodeseraException } from './errors';
+import Nodesera from './nodesera';
 import { QueryParameters, RequestParams } from './types';
 import { encodeURLBase64 } from './utils';
 import { requestValidation } from './validation';

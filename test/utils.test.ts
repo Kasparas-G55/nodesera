@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import Nodesera from '../src';
+import Nodesera from '../src/nodesera';
 import { createRequestBuilder } from '../src/requestbuilder';
 import { createURLFromRequest } from '../src/utils';
 
