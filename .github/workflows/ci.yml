@@ -9,22 +9,7 @@ on:
       - main
 
 jobs:
-  build:
-    name: (ubuntu-latest, 16)
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - run: corepack enable
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: "pnpm"
-      - run: pnpm install
-      - run: pnpm lint
-      - run: pnpm build
-      - run: pnpm vitest --coverage
-      - uses: codecov/codecov-action@v3
-  build:
+  build-ubuntu-node-v18:
     name: (ubuntu-latest, 18)
     runs-on: ubuntu-latest
     steps:
