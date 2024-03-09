@@ -26,20 +26,20 @@
     "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
     "test": "pnpm lint && vitest run --coverage"
   },
-  "keywords": [],
+  "keywords": ["paysera", "api", "payment processing"],
   "bugs": {
     "url": "https://github.com/Kasparas-G55/nodesera/issues"
   },
   "homepage": "https://github.com/Kasparas-G55/nodesera#readme",
   "devDependencies": {
-    "@types/node": "^18.15.11",
-    "@typescript-eslint/eslint-plugin": "^5.57.0",
-    "@typescript-eslint/parser": "^5.57.0",
-    "@vitest/coverage-c8": "^0.29.8",
-    "eslint": "^8.37.0",
-    "typescript": "^5.0.3",
-    "unbuild": "^1.2.0",
-    "vitest": "^0.29.8"
+    "@types/node": "^20.11.25",
+    "@typescript-eslint/eslint-plugin": "^7.1.1",
+    "@typescript-eslint/parser": "^7.1.1",
+    "@vitest/coverage-v8": "^1.3.1",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.2",
+    "unbuild": "^2.0.0",
+    "vitest": "^1.3.1"
   },
-  "packageManager": "pnpm@7.17.1"
+  "packageManager": "pnpm@8.15.4"
 }
