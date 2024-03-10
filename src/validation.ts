@@ -1,10 +1,13 @@
 import { NodeseraException } from './errors';
 import { ParamScheme, RequestParams } from './types';
+import { readFile } from 'node:fs/promises';
+import { createHash, verify } from 'node:crypto';
 
 export function requestValidation(request: RequestParams) {
   for (const scheme of schemes) {
-    const { name, maxlen, required } = scheme;
+    const { name, maxlen, required, enums } = scheme;
     const param = request?.[name];
+
 
     if (required && !param) {
       throw new NodeseraException(`${name} is required.`);
@@ -13,7 +16,23 @@ export function requestValidation(request: RequestParams) {
     if (param && maxlen && param.length > maxlen) {
       throw new NodeseraException(`${name}'s length can't be greater than ${maxlen}.`);
     }
+
+    if (param && enums && !enums.includes(param)) {
+      throw new NodeseraException(`${name}'s value must be one of the following "${enums.join(', ')}"`);
+    }
   }
+}
+
+// TODO: Make test for function.
+export function verifySignMD5Hash(data: string, projectPassword: string, ss1: string) {
+  return createHash('md5').update(data + projectPassword).toString() === ss1;
+}
+
+// TODO: Make test for function.
+export async function verifySignRSAKey(data: string, ss2: string) {
+  const pubKey = await readFile('./public.key');
+
+  return verify('RSA-SHA1', Buffer.from(data), pubKey, Buffer.from(ss2, 'base64url'));
 }
 
 export const schemes: ParamScheme[] = [
@@ -22,7 +41,7 @@ export const schemes: ParamScheme[] = [
   { name: 'accepturl', maxlen: 255, required: true },
   { name: 'cancelurl', maxlen: 255, required: true },
   { name: 'callbackurl', maxlen: 255, required: true },
-  { name: 'version', maxlen: 9 },
+  { name: 'version', maxlen: 9, enums: ['1.6', '1.5', '1.4', '1.3', '1.2'] },
   { name: 'lang', maxlen: 3 },
   { name: 'amount', maxlen: 11 },
   { name: 'currency', maxlen: 3 },

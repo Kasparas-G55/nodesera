@@ -20,16 +20,6 @@ yarn add nodesera
 pnpm install nodesera
 ```
 
-Import:
-
-```js
-// ESM
-import { } from 'nodesera'
-
-// CommonJS
-const { } = require('nodesera')
-```
-
 ## License
 
 Made with 💛

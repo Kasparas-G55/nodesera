@@ -1,6 +1,6 @@
 {
   "name": "nodesera",
-  "version": "0.0.0",
+  "version": "0.2.0",
   "description": "Paysera Library for Node.js",
   "repository": "Kasparas-G55/nodesera",
   "author": "Kasparas Galdikas",
@@ -9,14 +9,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/types",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/types",
   "files": [
     "dist"
   ],
@@ -26,7 +26,11 @@
     "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
     "test": "pnpm lint && vitest run --coverage"
   },
-  "keywords": ["paysera", "api", "payment processing"],
+  "keywords": [
+    "paysera",
+    "api",
+    "payment processing"
+  ],
   "bugs": {
     "url": "https://github.com/Kasparas-G55/nodesera/issues"
   },
