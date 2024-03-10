@@ -2,15 +2,6 @@
  * @see {@link https://developers.paysera.com/en/checkout/integrations/integration-library#request-parameters Paysera Request Parameters}
  */
 
-declare global {
-  namespace NodeJS {
-    interface ProcessEnv {
-      VITE_PROJECT_ID?: string;
-      VITE_PROJECT_PASSWORD?: string;
-    }
-  }
-}
-
 export interface RequiredRequestParams {
   /** Unique project number, generated on project creation. */
   projectid: string;
@@ -179,7 +170,7 @@ export interface OptionalRequestParams {
   [x: string]: string | undefined;
 }
 
-type RequestParams = RequiredRequestParams & OptionalRequestParams;
+export type RequestParams = RequiredRequestParams & OptionalRequestParams;
 type VerifiedRequestParams = RequiredRequestParams & Record<keyof OptionalRequestParams, string>
 
 export interface ParamScheme {
