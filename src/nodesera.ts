@@ -1,6 +1,8 @@
 import { NodeseraException } from './errors';
 import { createRequestBuilder } from './requestbuilder';
 import { RequestParams } from './types';
+import { verifySignMD5Hash, verifySignRSAKey } from './validation';
+import { createURLFromRequest, decodeURLBase64, decodeURLBase64ToString } from './utils';
 
 export default class Nodesera {
   /**
@@ -23,3 +25,5 @@ export default class Nodesera {
     return requestBuilder.buildRequest();
   }
 }
+
+export { verifySignMD5Hash, verifySignRSAKey, createURLFromRequest, decodeURLBase64, decodeURLBase64ToString };

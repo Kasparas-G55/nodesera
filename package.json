@@ -9,14 +9,14 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/nodesera.d.ts",
-      "import": "./dist/nodesera.mjs",
-      "require": "./dist/nodesera.cjs"
+      "types": "./dist/types",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
     }
   },
-  "main": "./dist/nodesera.cjs",
-  "module": "./dist/nodesera.mjs",
-  "types": "./dist/nodesera.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/types",
   "files": [
     "dist"
   ],
@@ -26,7 +26,11 @@
     "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
     "test": "pnpm lint && vitest run --coverage"
   },
-  "keywords": ["paysera", "api", "payment processing"],
+  "keywords": [
+    "paysera",
+    "api",
+    "payment processing"
+  ],
   "bugs": {
     "url": "https://github.com/Kasparas-G55/nodesera/issues"
   },
