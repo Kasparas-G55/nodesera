@@ -9,8 +9,8 @@ on:
       - main
 
 jobs:
-  build-ubuntu-node-v18:
-    name: (ubuntu-latest, 18)
+  build:
+    name: build (ubuntu-latest, node v18)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
