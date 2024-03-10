@@ -1,6 +1,6 @@
 {
   "name": "nodesera",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Paysera Library for Node.js",
   "repository": "Kasparas-G55/nodesera",
   "author": "Kasparas Galdikas",
@@ -9,16 +9,18 @@
   "type": "module",
   "exports": {
     ".": {
-      "types": "./dist/types",
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
-  "types": "./dist/types",
+  "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "/dist/index.cjs",
+    "/dist/index.mjs",
+    "/dist/index.d.ts"
   ],
   "scripts": {
     "build": "unbuild",
