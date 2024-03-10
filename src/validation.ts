@@ -1,5 +1,7 @@
 import { NodeseraException } from './errors';
 import { ParamScheme, RequestParams } from './types';
+import { readFile } from 'node:fs/promises';
+import { createHash, verify } from 'node:crypto';
 
 export function requestValidation(request: RequestParams) {
   for (const scheme of schemes) {
@@ -19,6 +21,18 @@ export function requestValidation(request: RequestParams) {
       throw new NodeseraException(`${name}'s value must be one of the following "${enums.join(', ')}"`);
     }
   }
+}
+
+// TODO: Make test for function.
+export function verifySignMD5Hash(data: string, projectPassword: string, ss1: string) {
+  return createHash('md5').update(data + projectPassword).toString() === ss1;
+}
+
+// TODO: Make test for function.
+export async function verifySignRSAKey(data: string, ss2: string) {
+  const pubKey = await readFile('./public.key');
+
+  return verify('RSA-SHA1', Buffer.from(data), pubKey, Buffer.from(ss2, 'base64url'));
 }
 
 export const schemes: ParamScheme[] = [
