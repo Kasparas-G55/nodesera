@@ -14,6 +14,34 @@ export function encodeURLBase64(request: RequestParams) {
   return Buffer.from(params).toString('base64url');
 }
 
+/**
+ *
+ * Decode URLBase64 string to URLSearchParams string.
+ *
+ * @example 'projectPassword=test&projectid=test&accepturl=test&callbackurl=test&cancelurl=test&orderid=test&version=1.6'
+ *
+ * @param data Base64URL received from callback.
+ *
+ * @returns string
+ */
+export function decodeURLBase64ToString(data: string): string {
+  return Buffer.from(data, 'base64url').toString();
+}
+
+/**
+ *
+ * Decode URLBase64 string to RequestParams or any valid URLSearchParams string into an object.
+ *
+ * @param data Base64URL received from callback.
+ *
+ * @returns {RequestParams} Request Parameters | T extends object
+ */
+export function decodeURLBase64<T extends object = RequestParams>(data: string): T {
+  const params = new URLSearchParams(decodeURLBase64ToString(data));
+
+  return Object.fromEntries(params.entries()) as T;
+}
+
 export function createURLFromRequest(query: QueryParameters) {
   const url = new URL(Nodesera.PAY_URL);
   const searchParams = new URLSearchParams(query);
