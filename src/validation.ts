@@ -3,8 +3,9 @@ import { ParamScheme, RequestParams } from './types';
 
 export function requestValidation(request: RequestParams) {
   for (const scheme of schemes) {
-    const { name, maxlen, required } = scheme;
+    const { name, maxlen, required, enums } = scheme;
     const param = request?.[name];
+
 
     if (required && !param) {
       throw new NodeseraException(`${name} is required.`);
@@ -12,6 +13,10 @@ export function requestValidation(request: RequestParams) {
 
     if (param && maxlen && param.length > maxlen) {
       throw new NodeseraException(`${name}'s length can't be greater than ${maxlen}.`);
+    }
+
+    if (param && enums && !enums.includes(param)) {
+      throw new NodeseraException(`${name}'s value must be one of the following "${enums.join(', ')}"`);
     }
   }
 }
@@ -22,7 +27,7 @@ export const schemes: ParamScheme[] = [
   { name: 'accepturl', maxlen: 255, required: true },
   { name: 'cancelurl', maxlen: 255, required: true },
   { name: 'callbackurl', maxlen: 255, required: true },
-  { name: 'version', maxlen: 9 },
+  { name: 'version', maxlen: 9, enums: ['1.6', '1.5', '1.4', '1.3', '1.2'] },
   { name: 'lang', maxlen: 3 },
   { name: 'amount', maxlen: 11 },
   { name: 'currency', maxlen: 3 },

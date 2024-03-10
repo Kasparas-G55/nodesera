@@ -5,6 +5,7 @@ import { QueryParameters, RequestParams, VerifiedRequestParams } from './types';
 
 export function encodeURLBase64(request: RequestParams) {
   const invalidParams: string[] = [];
+
   if (!verifyRequestParams(request, invalidParams)) {
     throw new NodeseraException(`[${invalidParams.join(', ')}] must be of type string, make sure to stringify POJOs.`);
   }
