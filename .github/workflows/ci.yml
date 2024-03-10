@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    name: (ubuntu-latest, 18)
+    name: build (ubuntu-latest, node v18)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
