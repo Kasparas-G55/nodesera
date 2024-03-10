@@ -1,6 +1,6 @@
 import { URLSearchParams } from 'url';
 import { NodeseraException } from './errors';
-import Nodesera from './nodesera';
+import { Nodesera } from './nodesera';
 import { QueryParameters, RequestParams, VerifiedRequestParams } from './types';
 
 export function encodeURLBase64(request: RequestParams) {

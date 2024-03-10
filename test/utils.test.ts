@@ -1,5 +1,5 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
-import Nodesera from '../src/nodesera';
+import { Nodesera } from '../src/nodesera';
 import { createRequestBuilder } from '../src/requestbuilder';
 import { createURLFromRequest, decodeURLBase64, decodeURLBase64ToString } from '../src/utils';
 import { RequestParams } from '../src/types';

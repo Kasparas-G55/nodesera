@@ -4,7 +4,7 @@ import { RequestParams } from './types';
 import { verifySignMD5Hash, verifySignRSAKey } from './validation';
 import { createURLFromRequest, decodeURLBase64, decodeURLBase64ToString } from './utils';
 
-export default class Nodesera {
+export class Nodesera {
   /**
    * Paysera's API version.
    */
