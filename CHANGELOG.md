@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.3.1
+
+
+### 🩹 Fixes
+
+- Paysera's public.key not included when publishing module ([#9](https://github.com/Kasparas-G55/nodesera/pull/9))
+
+### 💅 Refactors
+
+- ⚠️  Replace class with function in `Nodesera.ts` ([#8](https://github.com/Kasparas-G55/nodesera/pull/8))
+- ⚠️  Simplify code by merging `requestBuilder.ts` in to `createNodesera` function ([#10](https://github.com/Kasparas-G55/nodesera/pull/10))
+[bd8f8c5](https://github.com/Kasparas-G55/nodesera/commit/bd8f8c5))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Replace class with function in `Nodesera.ts` ([#8](https://github.com/Kasparas-G55/nodesera/pull/8))
+- ⚠️  Simplify code by merging `requestBuilder.ts` in to `createNodesera` function ([#10](https://github.com/Kasparas-G55/nodesera/pull/10))
+
+### ❤️ Contributors
+
+- Kasparas Galdikas ([@Kasparas-G55](http://github.com/Kasparas-G55)) <kasparas.galdikas55@gmail.com>
+
 ## v0.2.1
 
 
@@ -89,4 +111,3 @@
 
 - Kasparas-G55 <kasparas.galdikas55@gmail.com>
 - Kasparas Galdikas ([@Kasparas-G55](http://github.com/Kasparas-G55))
-
