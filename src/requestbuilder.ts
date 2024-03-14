@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto';
 import { NodeseraException } from './errors';
-import { Nodesera } from './nodesera';
+import { VERSION } from './nodesera';
 import { QueryParameters, RequestParams } from './types';
 import { encodeURLBase64 } from './utils';
 import { requestValidation } from './validation';
@@ -27,7 +27,7 @@ export function createRequestBuilder(request: RequestParams) {
      */
     buildRequest(): QueryParameters {
       requestValidation(this.data);
-      this.data.version = this.data.version ?? Nodesera.VERSION;
+      this.data.version = this.data.version ?? VERSION;
       return this.createRequest();
     },
 

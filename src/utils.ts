@@ -1,6 +1,6 @@
 import { URLSearchParams } from 'url';
 import { NodeseraException } from './errors';
-import { Nodesera } from './nodesera';
+import { PAY_URL } from './nodesera';
 import { QueryParameters, RequestParams, VerifiedRequestParams } from './types';
 
 export function encodeURLBase64(request: RequestParams) {
@@ -43,7 +43,7 @@ export function decodeURLBase64<T extends object = RequestParams>(data: string):
 }
 
 export function createURLFromRequest(query: QueryParameters) {
-  const url = new URL(Nodesera.PAY_URL);
+  const url = new URL(PAY_URL);
   const searchParams = new URLSearchParams(query);
 
   url.search = searchParams.toString();
