@@ -4,18 +4,19 @@ import { RequestParams } from './types';
 import { verifySignMD5Hash, verifySignRSAKey } from './validation';
 import { createURLFromRequest, decodeURLBase64, decodeURLBase64ToString } from './utils';
 
-export class Nodesera {
-  /**
-   * Paysera's API version.
-   */
-  public static readonly VERSION = '1.6';
+/**
+ * Paysera's Latest API version.
+ */
+export const VERSION = '1.6';
 
-  /**
-   * Server URL where all requests should go.
-   */
-  public static readonly PAY_URL = 'https://bank.paysera.com/pay';
+/**
+ * Server URL where all requests should go.
+ */
+export const PAY_URL = 'https://bank.paysera.com/pay';
 
-  public buildRequest(request: RequestParams) {
+export function createNodesera() {
+
+  function buildRequest(request: RequestParams) {
     if (!request.projectid || !request.projectPassword) {
       throw new NodeseraException();
     }
@@ -24,6 +25,8 @@ export class Nodesera {
 
     return requestBuilder.buildRequest();
   }
+
+  return { VERSION, PAY_URL, buildRequest };
 }
 
 export { verifySignMD5Hash, verifySignRSAKey, createURLFromRequest, decodeURLBase64, decodeURLBase64ToString };
