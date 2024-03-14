@@ -20,7 +20,8 @@
   "files": [
     "/dist/index.cjs",
     "/dist/index.mjs",
-    "/dist/index.d.ts"
+    "/dist/index.d.ts",
+    "./src/public.key"
   ],
   "scripts": {
     "build": "unbuild",
