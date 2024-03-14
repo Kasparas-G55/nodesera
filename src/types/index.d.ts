@@ -171,7 +171,7 @@ export interface OptionalRequestParams {
 }
 
 export type RequestParams = RequiredRequestParams & OptionalRequestParams;
-type VerifiedRequestParams = RequiredRequestParams & Record<keyof OptionalRequestParams, string>
+export type VerifiedRequestParams = RequiredRequestParams & Record<keyof OptionalRequestParams, string>
 
 export interface ParamScheme {
   name: string;
