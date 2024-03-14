@@ -1,6 +1,5 @@
 import { describe, expect, expectTypeOf, it } from 'vitest';
-import { PAY_URL } from '../src/nodesera';
-import { createRequestBuilder } from '../src/requestbuilder';
+import { PAY_URL, createNodesera } from '../src/nodesera';
 import { createURLFromRequest, decodeURLBase64, decodeURLBase64ToString } from '../src/utils';
 import { RequestParams } from '../src/types';
 
@@ -18,9 +17,9 @@ describe('utils', () => {
   };
 
   it('should return a paysera url with data and sign queries.', () => {
-    const requestBuilder = createRequestBuilder(request);
+    const nodesera = createNodesera(request);
 
-    const query = requestBuilder.buildRequest();
+    const query = nodesera.createRequest();
 
     expect(createURLFromRequest(query))
       .toBe(`${PAY_URL}?data=${data}&sign=${sign}`);
