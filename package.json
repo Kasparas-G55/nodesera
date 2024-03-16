@@ -18,13 +18,13 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "/dist/index.cjs",
-    "/dist/index.mjs",
-    "/dist/index.d.ts",
-    "./src/public.key"
+    "./dist/index.cjs",
+    "./dist/index.mjs",
+    "./dist/index.d.ts",
+    "./dist/public.key"
   ],
   "scripts": {
-    "build": "unbuild",
+    "build": "unbuild && cp ./src/public.key ./dist",
     "dev": "vitest dev",
     "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
     "test": "pnpm lint && vitest run --coverage"
