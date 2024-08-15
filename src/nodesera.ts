@@ -1,5 +1,5 @@
 import { NodeseraException } from './errors';
-import { QueryParameters, RequestParams } from './types';
+import { PayseraProjectPassword, QueryParameters, RequestParams } from './types';
 import { encodeURLBase64 } from './utils';
 import { requestValidation } from './validation';
 import { createHash } from 'node:crypto';
@@ -14,13 +14,13 @@ export const VERSION = '1.6';
  */
 export const PAY_URL = 'https://bank.paysera.com/pay';
 
-export function createNodesera(request: RequestParams) {
+export function createNodesera(request: RequestParams, projectPassword: PayseraProjectPassword) {
 
   if (!request.projectid) {
     throw new NodeseraException('projectid is required.');
   }
 
-  if (!request.projectPassword) {
+  if (!projectPassword) {
     throw new NodeseraException('projectPassword is required.');
   }
 
@@ -29,6 +29,10 @@ export function createNodesera(request: RequestParams) {
   return {
     get data() {
       return request;
+    },
+
+    get projectPassword() {
+      return projectPassword;
     },
 
     set data(newRequestParams: RequestParams) {
@@ -43,9 +47,10 @@ export function createNodesera(request: RequestParams) {
     createRequest(): QueryParameters {
       requestValidation(this.data);
       const base64EncodedURL = encodeURLBase64(this.data);
+
       return {
         data: base64EncodedURL,
-        sign: createHash('md5').update(base64EncodedURL + this.data.projectPassword).digest('hex')
+        sign: createHash('md5').update(base64EncodedURL + this.projectPassword).digest('hex')
       };
     }
   };
