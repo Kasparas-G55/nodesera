@@ -1,6 +1,34 @@
 # Changelog
 
 
+## v0.3.3
+
+[compare changes](https://github.com/Kasparas-G55/nodesera/compare/v0.3.2...v0.3.3)
+
+### 🩹 Fixes
+
+- Remove `projectPassword` from request payload ([2a367d6](https://github.com/Kasparas-G55/nodesera/commit/2a367d6))
+
+### 🏡 Chore
+
+- Update `package.json` ([f83b113](https://github.com/Kasparas-G55/nodesera/commit/f83b113))
+
+### ❤️ Contributors
+
+- Kasparas-G55 ([@Kasparas-G55](http://github.com/Kasparas-G55))
+
+## v0.3.2
+
+[compare changes](https://github.com/Kasparas-G55/nodesera/compare/v0.3.1...v0.3.2)
+
+### 🩹 Fixes
+
+- Include public.key in to dist when publishing package ([#13](https://github.com/Kasparas-G55/nodesera/pull/13))
+
+### ❤️ Contributors
+
+- Kasparas Galdikas ([@Kasparas-G55](http://github.com/Kasparas-G55))
+
 ## v0.3.1
 
 

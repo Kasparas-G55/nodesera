@@ -5,7 +5,6 @@ import { createNodesera } from '../src/nodesera';
 
 describe('createNodesera', () => {
   const request: any = {
-    projectPassword: '',
     projectid: [],
     orderid: {},
     accepturl: 1,
@@ -15,20 +14,18 @@ describe('createNodesera', () => {
   };
 
   it('throws exception when project password is falsy.', () => {
-    expect(() => createNodesera(request)).toThrowError(new NodeseraException('projectPassword is required.'));
+    expect(() => createNodesera(request, '')).toThrowError(new NodeseraException('projectPassword is required.'));
   });
 
   it('throws exception when project id is falsy.', () => {
-    request.projectPassword = [],
     request.projectid = '',
-    expect(() => createNodesera(request)).toThrowError(new NodeseraException('projectid is required.'));
+    expect(() => createNodesera(request, 'test')).toThrowError(new NodeseraException('projectid is required.'));
   });
 
   it('throws exception when one of the values don\'t match their enums.', () => {
-    request.projectPassword = 'test';
     request.projectid = 'test',
     request.version = 'test';
-    const nodesera = createNodesera(request);
+    const nodesera = createNodesera(request, 'test');
 
     expect(() => nodesera.createRequest())
       .toThrowError(new NodeseraException('version\'s value must be one of the following "1.6, 1.5, 1.4, 1.3, 1.2"'));
@@ -36,9 +33,8 @@ describe('createNodesera', () => {
 
   it('throws exception when one of the values is not a string.', () => {
     request.projectid = {};
-    request.projectPassword = {};
 
-    const nodesera = createNodesera(request);
+    const nodesera = createNodesera(request, 'test');
 
     delete nodesera.data.version;
 
@@ -49,7 +45,6 @@ describe('createNodesera', () => {
 
   it('returns query parameters when passing a valid request object.', () => {
     const request: RequestParams = {
-      projectPassword: 'test',
       projectid: 'test',
       accepturl: 'test',
       callbackurl: 'test',
@@ -57,12 +52,13 @@ describe('createNodesera', () => {
       orderid: 'test',
       version: '1.6'
     };
-    const nodesera = createNodesera(request);
+
+    const nodesera = createNodesera(request, 'test');
 
     expect(nodesera.createRequest())
       .toEqual({
-        data: 'cHJvamVjdFBhc3N3b3JkPXRlc3QmcHJvamVjdGlkPXRlc3QmYWNjZXB0dXJsPXRlc3QmY2FsbGJhY2t1cmw9dGVzdCZjYW5jZWx1cmw9dGVzdCZvcmRlcmlkPXRlc3QmdmVyc2lvbj0xLjY',
-        sign: '46829ee30ccf42b9467b3a8355a3c8e3'
+        data: 'cHJvamVjdGlkPXRlc3QmYWNjZXB0dXJsPXRlc3QmY2FsbGJhY2t1cmw9dGVzdCZjYW5jZWx1cmw9dGVzdCZvcmRlcmlkPXRlc3QmdmVyc2lvbj0xLjY',
+        sign: '27302088b8a75d661c312fa0d9d3f2c6'
       });
   });
 });
