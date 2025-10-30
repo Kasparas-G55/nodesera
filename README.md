@@ -1,15 +1,12 @@
-# nodesera
+# Nodesera Payment Gateway Integration
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+This project provides a Node.js library for integrating with the Paysera payment gateway, specifically version 1.6 of their API
 
-> Paysera Library for Node.js
+**Installation**
 
-## Usage
+Install the required dependencies:
 
-Install package:
-
-```sh
+```bash
 # npm
 npm install nodesera
 
@@ -19,6 +16,47 @@ yarn add nodesera
 # pnpm
 pnpm install nodesera
 ```
+
+## Usage
+
+1. Create a payment request object with the required parameters:
+
+```ts
+const request: RequestParams = {
+  projectid: '<YOUR_PROJECT_ID>',
+  projectPassword: '<YOUR_PROJECT_PASSWORD>',
+  orderid: '<UNIQUE_ORDER_ID>',
+  accepturl: 'https://<HOST>/payments/successful'
+  cancelurl: 'https://<HOST>/payments/cancel',
+  callbackurl: 'https://<HOST>/payments/callback'
+  amount: '10.00',
+  currency: 'EUR',
+  // ...other optional parameters
+};
+```
+
+2. Create a Nodesera instance and generate the payment request:
+
+```ts
+const nodesera = createNodesera(request);
+const queryParams = nodesera.createRequest();
+```
+
+3. Redirect the user to the payment URL:
+```ts
+const paymentUrl = createURLFromRequest(queryParams);
+
+// Redirect which ever way your HTTP server framework allows you to.
+// Either add `Location` header or send URL to client and redirect there.
+
+// E.g. h3.unjs.io
+// This would be at the end of its `eventHandler`
+sendRedirect(event, paymentUrl);
+```
+
+## Contributing
+
+Please feel free to contribute to this project!
 
 ## License
 

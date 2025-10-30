@@ -26,6 +26,7 @@
   "scripts": {
     "build": "unbuild && cp ./src/public.key ./dist",
     "dev": "vitest dev",
+    "play": "pnpm listhen -w --open ./playground/app.ts",
     "lint": "eslint --ext .ts,.js,.mjs,.cjs .",
     "test": "pnpm lint && vitest run --coverage"
   },
@@ -44,6 +45,8 @@
     "@typescript-eslint/parser": "^7.18.0",
     "@vitest/coverage-v8": "^1.6.0",
     "eslint": "^8.57.0",
+    "h3": "^1.11.1",
+    "listhen": "^1.7.2",
     "typescript": "^5.5.4",
     "unbuild": "^2.0.0",
     "vitest": "^1.6.0"
